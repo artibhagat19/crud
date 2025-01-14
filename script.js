@@ -4,13 +4,32 @@ const email = document.getElementById("emailInput")
 const age = document.getElementById("ageInput")
 const address = document.getElementById("addressInput")
 const btn = document.getElementById("addUserButton")
+const ul = document.getElementById('userList');
 
-function fetchData(){
-    fetch(api)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+
+
+async function fetchData() {
+    try {
+        const response = await fetch(api);
+        const data = await response.json();
+        console.log("Data1 :", data)
         return data;
-    })
+    } catch (error) {
+        console.error("Getting this error:", error);
+    }
 }
-fetchData()
+
+
+async function showData() {
+    let data = await fetchData();
+    console.log('data2 :', data);
+    data.map(ele => {
+        ul.innerHTML += `<div class="list-items">
+                            <h2>${ele.NAME}</h2>
+                            <p>${ele.EMAIL}</p>
+                            <p>${ele.AGE}</p>
+                        </div>`
+    });
+}
+
+showData();

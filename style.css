@@ -78,4 +78,20 @@ body {
   li button:hover {
     color: darkred;
   }
+
+#userList{
+  overflow-y: scroll;
+  
+}
+
+
+.list-items{
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgb(210, 208, 208)
+}
   
